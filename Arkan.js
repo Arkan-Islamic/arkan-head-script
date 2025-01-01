@@ -1,35 +1,4 @@
-<script>
-  // Create a function to remove the powered by text
-  function removePoweredBy() {
-    const poweredByText = document.querySelector(
-      "p.mt-8.text-center.text-base.text-gray-600"
-    );
-    if (poweredByText && poweredByText.textContent.includes("Powered By")) {
-      poweredByText.remove();
-    }
-  }
 
-  // Create a MutationObserver to watch for changes
-  const observer = new MutationObserver((mutations) => {
-    removePoweredBy();
-  });
-
-  // Start observing the footer or the entire document
-  document.addEventListener("DOMContentLoaded", function () {
-    // First try to remove if it's already there
-    removePoweredBy();
-
-    // Then start observing for changes
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
-  });
-
-  // Also try to remove on window load
-  window.addEventListener("load", removePoweredBy);
-</script>
-<script>
   document.addEventListener("DOMContentLoaded", async function () {
     const apiUrl = "https://api.easy-orders.net/api/v1/categories";
 
@@ -186,4 +155,4 @@
     // Call the main function
     replaceMenu();
   });
-</script>
+
