@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async function () {
-  const apiUrl = "https://api.easy-orders.net/api/v1/categories";
+  const apiUrl = "https://api.easy-orders.net/api/v1/categories?filter=parent_id||isnull&filter=hidden||eq||false&limit=50&sort=position,DESC";
 
   async function fetchCategories() {
     try {
