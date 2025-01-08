@@ -2,38 +2,23 @@ document.addEventListener("DOMContentLoaded", async function () {
   const apiUrl =
     "https://api.easy-orders.net/api/v1/categories?filter=parent_id||isnull&filter=hidden||eq||false&limit=50&sort=position,DESC";
 
-  // Helper function to detect Apple devices
-  function isAppleDevice() {
-    return /iPhone|iPad|iPod|Mac/i.test(navigator.userAgent);
-  }
-
   async function fetchCategories() {
     try {
-      // Define headers based on device type
-      const headers = isAppleDevice()
-        ? {
-            accept: "application/json",
-            "cache-control": "no-cache",
-            origin: "https://arkanislamic.myeasyorders.com",
-            referer: "https://arkanislamic.myeasyorders.com/",
-          }
-        : {
-            accept: "application/json, text/plain, */*",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "accept-language": "en-US,en;q=0.9,ar;q=0.8",
-            "cache-control": "no-cache",
-            origin: "https://arkanislamic.myeasyorders.com",
-            referer: "https://arkanislamic.myeasyorders.com/",
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "cross-site",
-            "user-agent":
-              "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
-          };
-
       const response = await fetch(apiUrl, {
         method: "GET",
-        headers: headers,
+        headers: {
+          accept: "application/json, text/plain, */*",
+          "accept-encoding": "gzip, deflate, br, zstd",
+          "accept-language": "en-US,en;q=0.9,ar;q=0.8",
+          "cache-control": "no-cache",
+          origin: "https://arkanislamic.myeasyorders.com",
+          referer: "https://arkanislamic.myeasyorders.com/",
+          "sec-fetch-dest": "empty",
+          "sec-fetch-mode": "cors",
+          "sec-fetch-site": "cross-site",
+          "user-agent":
+            "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+        },
       });
 
       if (!response.ok) {
